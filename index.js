@@ -63,13 +63,13 @@ const decode = (enc) => {
 
 async function savetube(link, quality, value) {
     try {
-        const cdn = (await axios.get("https://media.savetube.me/api/random-cdn")).data.cdn
+        const cdn = (await axios.get("https://media.savetube.vip/api/random-cdn")).data.cdn
         const infoget = (await axios.post('https://' + cdn + '/v2/info', {
             'url': link
         },{
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36',
-                'Referer': 'https://yt.savetube.me/1kejjj1?id=362796039'
+                'Referer': 'https://save-tube.com/'
             }
         })).data
         const info = decode(infoget.data)
@@ -81,7 +81,7 @@ async function savetube(link, quality, value) {
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36',
-                'Referer': 'https://yt.savetube.me/start-download?from=1kejjj1%3Fid%3D362796039'
+                'Referer': 'https://save-tube.com/'
             }
         })).data
         return {
@@ -152,54 +152,6 @@ async function ytmp4(link, formats = 360) {
 	}
 }
 
-async function apimp3(link, formats = 128) {
-	const id = get_id(link);
-	const format = audio.includes(Number(formats)) ? Number(formats) : 128
-	if (!id) return {
-		status: false,
-		message: "Parameter link tidak valid!"
-	}
-	try {
-	    const url = "https://youtube.com/watch?v=" + id
-	    const response = await axios.get(`https://api.vreden.my.id/api/v1/download/youtube/audio?url=${encodeURIComponent(url)}&quality=${format}`, {
-	        headers: {
-	            "user-agent": "VredenCloud/1.0 (+https://api.vreden.my.id; vreden@stayhome.li)"
-	        }
-	    })
-		return response.data.result
-	} catch (error) {
-		console.log(error)
-		return {
-			status: false,
-			message: "Terjadi kesalahan pada sistem!"
-		};
-	}
-}
-
-async function apimp4(link, formats = 360) {
-	const id = get_id(link);
-	const format = video.includes(Number(formats)) ? Number(formats) : 360
-	if (!id) return {
-		status: false,
-		message: "Parameter link tidak valid!"
-	}
-	try {
-		const url = "https://youtube.com/watch?v=" + id
-	    const response = await axios.get(`https://api.vreden.my.id/api/v1/download/youtube/video?url=${encodeURIComponent(url)}&quality=${format}`, {
-	        headers: {
-	            "user-agent": "VredenCloud/1.0 (+https://api.vreden.my.id; vreden@stayhome.li)"
-	        }
-	    })
-		return response.data.result
-	} catch (error) {
-		console.log(error)
-		return {
-			status: false,
-			message: "Terjadi kesalahan pada sistem!"
-		};
-	}
-}
-
 async function metadata(link) {
     const id = get_id(link);
 	if (!id) return {
@@ -228,6 +180,8 @@ async function metadata(link) {
         const snippet = response.data.items[0].snippet
         const statistics = response.data.items[0].statistics
         return {
+            status: true,
+			creator: "@vreden/youtube_scraper",
             id: id,
             channel_id: snippet.channelId,
             channel_title: snippet.channelTitle,
@@ -294,6 +248,8 @@ async function channel(input) {
         const snippet = result.data.items[0].snippet
         const statistics = result.data.items[0].statistics
         return {
+            status: true,
+			creator: "@vreden/youtube_scraper",
             id: response.data.channelId,
             title: snippet.title,
             description: snippet.description,
