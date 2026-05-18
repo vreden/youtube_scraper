@@ -1,4 +1,4 @@
-# 🎬 @vreden/youtube_scraper v1.2.8
+# 🎬 @vreden/youtube_scraper v1.2.9
 
 Welcome to **@vreden/youtube_scraper** — your all-in-one YouTube scraping, metadata, and download toolkit for Node.js! 🚀
 
@@ -28,24 +28,30 @@ npm install @vreden/youtube_scraper
 ## ⚡ Quick Start
 
 ```js
+// Import Module
 const yt = require('@vreden/youtube_scraper');
-
+```
+```js
 // Download audio as MP3
 yt.ytmp3('https://www.youtube.com/watch?v=dQw4w9WgXcQ', 128)
   .then(result => console.log(result));
-
+```
+```js
 // Download video as MP4
 yt.ytmp4('https://www.youtube.com/watch?v=dQw4w9WgXcQ', 360)
   .then(result => console.log(result));
-
+```
+```js
 // Search YouTube
 yt.search('lofi hip hop')
   .then(results => console.log(results));
-
+```
+```js
 // Get video metadata
 yt.metadata('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
   .then(info => console.log(info));
-
+```
+```js
 // Get channel metadata
 yt.channel('@lofi_girl')
   .then(info => console.log(info));
@@ -66,16 +72,6 @@ Download YouTube audio as MP3.
 Download YouTube video as MP4.  
 - `link` — YouTube URL or video ID  
 - `quality` — Video quality (`144`, `360`, `480`, `720`, `1080` p)
-
-### `.apimp3(link, quality = 128)`
-
-Alternative MP3 downloader (uses api.vreden.my.id).  
-- Same params as `.ytmp3`.
-
-### `.apimp4(link, quality = 360)`
-
-Alternative MP4 downloader (uses api.vreden.my.id).  
-- Same params as `.ytmp4`.
 
 ### `.search(query)`
 
@@ -136,6 +132,8 @@ Fetch channel metadata.
 
 ```json
 {
+  "status": true,
+  "creator": "@vreden/youtube_scraper",
   "id": "QqJ9zrY_ITw",
   "channel_id": "UCrjyDI5SQnxBbGnUpnfT2NA",
   "channel_title": "Issam Alnajjar",
@@ -201,6 +199,8 @@ Fetch channel metadata.
 
 ```json
 {
+  "status": true,
+  "creator": "@vreden/youtube_scraper",
   "id": "UCX6OQ3DkcsbYNE6H8uQQuVA",
   "title": "MrBeast",
   "description": "SUBSCRIBE FOR A COOKIE!\nNew MrBeast or...",
@@ -240,17 +240,18 @@ Fetch channel metadata.
 
 ## 💌 Contact & Community
 
-- **WhatsApp Developer:** [wa.me/6285643115199](https://wa.me/6285643115199)
-- **WhatsApp Channel:** [whatsapp.com/channel/0029Vaf0HPMLdQeZsp3XRp2T](https://whatsapp.com/channel/0029Vaf0HPMLdQeZsp3XRp2T)
+- **WhatsApp Developer:** in active :)
+- **WhatsApp Channel:** in active :)
 
-Feel free to reach out for feature requests, bug reports, or just to say hi! We love hearing from developers. ✨
+Sekarang saya tidak lagi aktif di media sosial karena menempuh pendidikan lanjut dan tidak memungkinkan untuk memegang gadget kembali, terimakasih untuk 2 tahun lebih telah menemani masa belajar dan sampai jumpa lagi 😇👋🏻
 
 ---
 
 ## 🛠️ Requirements
 
-- Node.js v14+ recommended
+- Node.js v18+ recommended
 - Internet connection
+- No public server
 
 ---
 
@@ -266,4 +267,4 @@ If you find this project useful, please star ⭐️ the repo and share it with y
 
 ---
 
-Made with ❤️ by [@vreden](https://www.rumahotp.com)
+Made with ❤️ by [@vreden](https://www.vreden.co.id)
