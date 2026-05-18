@@ -296,8 +296,6 @@ module.exports = {
 	search,
 	ytmp3,
 	ytmp4,
-	apimp3,
-	apimp4,
 	metadata,
 	channel
 };
